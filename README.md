@@ -7,3 +7,4 @@
 ## JS: 
 - do console se vypisuje vše co by se mělo délka,výška,kliknutí, a ostatní,
 - zavíraní nav reaguje na escape a kliknutí vedle
+- Někde jak u class tak v JS používám angličtinu s češtinou, kóduju většinou pouze v angličtině, pro tento test jsem se snažil nějaké classy a let dát i do češtiny.
