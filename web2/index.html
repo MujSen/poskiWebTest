@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <title>Testovací úloha - Adam Bujnoch</title>
+    <meta author="Adam Bujnoch"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./dist/style.css" />
+  </head>
+  <body>
+    <header>
+      <button class="burgir"><div></div></button>
+      <div class="logo">
+        <h2>The</h2>
+        <h1>Blog</h1>
+      </div>
+      <button class="lupa">
+        <div class="vyhledavani">
+          <input type="text">
+        </div>
+        <div class="lupaIcon"></div>
+      </button>
+    </header>
+    <main>
+      <section>
+        <a class="karta" href="/dalsiStranka" target="_blank">
+          <div class="category">
+            <p>Travel</p>
+          </div>
+          <div class="info">
+            <h3>Etiam quis quam. Nemo enim ipsam voluptatem quia</h3>
+            <p class="date">May 25, 2048 / 9 min.</p>
+          </div>
+          <img src="/sources/img/article1.jpg" alt="Etiam quis quam" />
+        </div>
+        <a href="/dalsiStranka" target="_blank" class="kartaSmall">
+          <img
+            src="/sources/svg/space-station-moon-alt-duotone.svg"
+            alt="moon"
+          />
+          <h3>
+            Discover content <br />
+            from different universe
+          </h3>
+        </a>
+      </section>
+      <section>
+        <div class="wrapped">
+            <a class="karta" target="_blank" href="/dalsiStranka">
+                <div class="category">
+                  <p>Travel</p>
+                </div>
+                <div class="info">
+                  <h3>Etiam quis quam. Nemo enim ipsam voluptatem quia</h3>
+                  <p class="date">August 20, 2047 / 8 min.</p>
+                </div>
+                <img src="/sources/img/article2.jpg" alt="Etiam quis quam" />
+              </a>
+              <a class="karta" target="_blank" href="/dalsiStranka">
+                <div class="category">
+                  <p>Travel</p>
+                </div>
+                <div class="info">
+                  <h3>Etiam quis quam. Nemo enim ipsam voluptatem quia</h3>
+                  <p class="date">August 20, 2047 / 8 min.</p>
+                </div>
+                <img src="/sources/img/article3.jpg" alt="Etiam quis quam" />
+              </a>
+        </div>
+        <a href="/dalsiStranka" target="_blank" class="karta">
+          <div class="category">
+            <p>Travel</p>
+          </div>
+          <div class="info">
+            <h3>Etiam quis quam. Nemo enim ipsam voluptatem quia</h3>
+            <p class="date">August 20, 2047 / 8 min.</p>
+          </div>
+          <img src="/sources/img/article4.jpg" alt="Etiam quis quam" />
+        </a>
+      </section>
+    </main>
+    <aside>
+      <a href="https://www.facebook.com/"><img src="/sources/svg/facebook-f-brands.svg" alt="facebook" /></a>
+      <a href="https://www.facebook.com/"><img src="/sources/svg/twitter-brands.svg" alt="twitter" /></a>
+      <a href="https://www.facebook.com/"><img src="/sources/svg/instagram-brands.svg" alt="instagram" /></a>
+      <a href="https://www.facebook.com/"><img src="/sources/svg/share-alt-solid.svg" alt="share" /></a>
+    </aside>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Domů</a></li>
+        <li><a href="/dalsiStranka">O nás</a></li>
+        <li><a href="/dalsiStranka">Kontakt</a></li>
+        <li><a href="/dalsiStranka">Pomoc</a></li>
+        <li><a href="/dalsiStranka">Ochrana</a></li>
+        <li><a href="/dalsiStranka">Podmínky</a></li>
+        <li><a href="/dalsiStranka">Nastaveni</a></li>
+      </ul>
+    </nav>
+    <footer>
+      <p>All rights reserved. ©2048</p>
+      <div class="logo">
+        <p>The</p>
+        <p>Blog</p>
+      </div>
+    </footer>
+    <script>
+      const burgir = document.querySelector(".burgir");
+      const nav = document.querySelector("nav");
+      const pocetPrispevku = document.querySelectorAll(".karta");
+      const pocetPrispevkuSmall = document.querySelectorAll(".kartaSmall");
+      window.addEventListener('scroll', () => {
+        const aside = document.querySelector('aside');
+        const viewportOffset = aside.getBoundingClientRect();
+        console.log(`Pozice sociálních ikon vůči viewportu - vrch: ${viewportOffset.top}px, levo: ${viewportOffset.left}px`);
+        console.log(`Pozice sociálních ikon vůči dokumentu - vrch: ${(window.scrollY + viewportOffset.top)}px, levo: ${(window.scrollX + viewportOffset.left)}px`);
+      });
+      function soucetDelekNadpisu() {
+        const headers = document.querySelectorAll('h3');
+        return Array.from(headers).reduce((celek, header) => celek + header.textContent.length, 0);
+      }
+      const prumnernaVyskaKaret = () => {
+        const vCelku = [...pocetPrispevku, ...pocetPrispevkuSmall];
+        const celkovaVyska = vCelku.reduce((celek, el) => {
+          const style = getComputedStyle(el);
+          const vyska = el.offsetHeight;
+          const paddingTop = parseFloat(style.paddingTop);
+          const paddingBottom = parseFloat(style.paddingBottom);
+          return celek + vyska + paddingTop + paddingBottom;
+        }, 0);
+        const prumnernaVyska = celkovaVyska / vCelku.length;
+        return prumnernaVyska;
+      };
+      document.querySelectorAll('.karta').forEach(karta => {
+        karta.addEventListener('click', function() {
+          const h3 = this.querySelector('h3');
+          const p = this.querySelector('p.date');
+          console.log('název:', h3.textContent);
+          console.log('datum:', p.textContent);
+          console.log('délka nadpisu:', h3.textContent.length);
+        });
+      });
+      document.querySelectorAll('.kartaSmall').forEach(karta => {
+        karta.addEventListener('click', function() {
+          const h3 = this.querySelector('h3');
+          const p = this.querySelector('p.date');
+          console.log('název:', h3.textContent);
+          console.log('délka nadpisu:', h3.textContent.length);
+        });
+      });
+      const celkovyPocetPrispevku = () => pocetPrispevku.length + pocetPrispevkuSmall.length;
+      console.log("Počet příspěvků " + celkovyPocetPrispevku());
+      console.log("Průměrná výška příspěvků: " + prumnernaVyskaKaret());
+      console.log("Součet délek nadpisů příspěvků: " +soucetDelekNadpisu())
+      let active = false;
+      burgir.addEventListener("click", () => {
+        active ? nav.classList.remove("activeNav") : nav.classList.add("activeNav");
+        active ? burgir.classList.remove("krizek") : burgir.classList.add("krizek");
+        active ? (active = false) : (active = true);
+      })
+      document.addEventListener('keydown', evt => {
+    if (evt.key === 'Escape') {
+      nav.classList.remove("activeNav")
+      burgir.classList.remove("krizek");
+      active = false;
+    }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target) && !burgir.contains(event.target)) {
+        nav.classList.remove("activeNav")
+        burgir.classList.remove("krizek");
+        active = false;
+        }
+    });
+    const lupa = document.querySelector('.lupaIcon');
+    const vyhledavani = document.querySelector('.vyhledavani');
+    let vyhledavaniOdkryte = false;
+    lupa.addEventListener('click', () => {
+      vyhledavaniOdkryte ? vyhledavani.classList.remove('vyhledavaniOdkryte') : vyhledavani.classList.add('vyhledavaniOdkryte');
+      vyhledavaniOdkryte ? (vyhledavaniOdkryte = false) : (vyhledavaniOdkryte = true);
+    })
+    </script>
+  </body>
+</html>

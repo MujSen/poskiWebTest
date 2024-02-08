@@ -1,0 +1,408 @@
+$main-right-left-padding: 240px;
+$category-color: #84fab0;
+$category-color-second: #7028e4;
+  body {
+    background: #333333;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  header {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 $main-right-left-padding;
+    margin-bottom: 80px;
+    .krizek {
+      transform: rotate(-45deg);
+    }
+    .burgir {
+      width: 50px;
+      height: 32px;
+      background: none;
+      border: none;
+      transition: transform 0.5s;
+      &:hover {
+        transform: scale(1.2);
+      }
+      div {
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        height: 4px;
+        width: 30px;
+        transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        border-radius: 2px;
+        &::before,
+        &::after {
+          display: block;
+          background-color: #fff;
+          position: absolute;
+          height: 4px;
+          width: 30px;
+          transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+          border-radius: 2px;
+        }
+        &::before {
+          content: "";
+          margin-top: -9px;
+        }
+        &::after {
+          content: "";
+          margin-top: 9px;
+        }
+      }
+    }
+    .lupa {
+      display: flex;
+      background: none;
+      border: none;
+      align-items: center;
+      .vyhledavani {
+        display: none;
+      }
+      .vyhledavaniOdkryte {
+        display: block;
+        input {
+          animation: width 0.5s;
+          width: 100%;
+          height: 100%;
+          background-color: #b8a8d1;
+          padding: 20px;
+          border-radius: 1000px;
+          opacity: 1;
+        }
+      }
+      .lupaIcon {
+        position: relative;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        border: 5px solid #ffffff;
+        &:hover {
+          animation: shake 1s infinite;
+        }
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: 6px;
+          height: 20px;
+          border-radius: 10px;
+          transform: rotate(-45deg);
+          background-color: #ffffff;
+          bottom: -90%;
+          right: -60%;
+        }
+      }
+    }
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    p:first-of-type,
+    h2 {
+      transform: matrix(0, -1, 1, 0, 0, 0);
+      color: $category-color;
+    }
+    p:last-of-type {
+      color: #ffffff;
+    }
+    h1 {
+      color: #ffffff;
+      text-align: left;
+      font: normal normal 800 64px/95px Poppins;
+      letter-spacing: 3.2px;
+      color: #ffffff;
+      opacity: 1;
+    }
+    h2 {
+      font: normal normal 800 16px/25px Poppins;
+      letter-spacing: 0.8px;
+      color: $category-color;
+      opacity: 1;
+    }
+    p {
+      &:last-of-type {
+        font: normal normal 800 34px/51px Poppins;
+        letter-spacing: 1.7px;
+      }
+      &:first-of-type {
+        font: normal normal 800 8px/12px Poppins;
+        letter-spacing: 0.4px;
+      }
+    }
+  }
+  aside {
+    display: flex;
+    flex-flow: column;
+    width: fit-content;
+    padding-left: 80px;
+    position: fixed;
+    top: 25%;
+    a {
+      margin-bottom: 24px;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    img {
+      height: 20px;
+    }
+  }
+  main {
+    padding: 0 $main-right-left-padding;
+    margin-bottom: 102px;
+    .karta {
+      position: relative;
+      box-sizing: content-box;
+      padding-top: 48px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      aspect-ratio: 960/588;
+      width: 960px;
+      transition: transform 2s;
+    }
+    .kartaSmall {
+      transition: transform 2s;
+    }
+    .info {
+      position: relative;
+      h3,
+      p,
+      .date {
+        z-index: 2;
+      }
+      h3 {
+        margin-right: 93px;
+      }
+      &::after {
+        z-index: 1;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: transparent
+          linear-gradient(180deg, #33333300 0%, #000000 100%) 0% 0% no-repeat
+          padding-box;
+      }
+    }
+    .wrapped {
+      width: 480px;
+      display: flex;
+      flex-flow: column;
+      margin-right: 20px;
+      .karta {
+        width: 100%;
+        margin-bottom: 20px;
+        &:last-of-type {
+          margin-bottom: 0;
+          .category {
+            color: #ffffff;
+            background-color: $category-color-second;
+            p {
+              color: #ffffff;
+            }
+          }
+        }
+        .info {
+          padding-bottom: 40px;
+          padding-left: 64px;
+          background: transparent
+            linear-gradient(180deg, #33333300 0%, #000000 100%) 0% 0% no-repeat
+            padding-box;
+        }
+      }
+    }
+    .info {
+      padding-bottom: 80px;
+      padding-left: 64px;
+      .date {
+        font: normal normal medium 16px/25px Poppins;
+        letter-spacing: 0.8px;
+        color: #ffffff;
+        opacity: 0.64;
+      }
+      h3 {
+        margin-bottom: 20px;
+        font: normal normal medium 28px/42px Poppins;
+        letter-spacing: 1.4px;
+        color: #ffffff;
+        opacity: 1;
+      }
+    }
+    .wrapped .karta .info {
+      h3 {
+        font: normal normal medium 20px/30px Poppins;
+        letter-spacing: 1px;
+        color: #ffffff;
+        margin-bottom: 16px;
+      }
+      .date {
+        font: normal normal medium 14px/21px Poppins;
+        letter-spacing: 0.7px;
+        color: #ffffff;
+        opacity: 0.64;
+      }
+    }
+    .karta {
+      img {
+        object-fit: cover;
+      }
+      &:hover {
+        transform: perspective(1500px) rotateY(10deg);
+      }
+    }
+    .karta {
+      .category {
+        background-color: $category-color;
+        padding: 6px 20px;
+        width: fit-content;
+        p {
+          font: normal normal 800 14px/21px Poppins;
+          letter-spacing: 0.7px;
+          color: #000000;
+          opacity: 1;
+        }
+      }
+      img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      .category {
+        margin-left: 64px;
+      }
+    }
+    section {
+      a:last-child:hover {
+        transform: perspective(1500px) rotateY(-10deg);
+      }
+      .karta,
+      .kartaSmall {
+        margin-right: 20px;
+      }
+      margin-bottom: 20px;
+      .karta {
+        margin-left: 0;
+      }
+      > {
+        :last-child {
+          margin-right: 0;
+        }
+        :first-child {
+          margin-left: 0;
+        }
+      }
+      display: flex;
+    }
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+  .kartaSmall {
+    display: flex;
+    padding: 80px;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    color: #ffffff;
+    justify-content: space-between;
+    text-align: center;
+    font: normal normal 800 24px/35px Poppins;
+    letter-spacing: 1.2px;
+    background: transparent linear-gradient(155deg, #e5b2ca 0%, $category-color-second 100%) 0%
+      0% no-repeat padding-box;
+    box-shadow: 0px 2px 24px #00000029;
+    img {
+      width: 100%;
+    }
+  }
+  nav {
+    display: none;
+    opacity: 0;
+  }
+  .activeNav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 2%;
+    margin-top: 40px;
+    background-color: #333333;
+    opacity: 1;
+    ul {
+      display: flex;
+      list-style-type: none;
+      justify-content: space-between;
+      flex-direction: column;
+      height: 50vh;
+      li a {
+        color: #ffffff;
+        padding: 20px;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: #7f7f7f;
+          padding: 20px;
+        }
+      }
+    }
+  }
+  footer {
+    padding: 24px $main-right-left-padding;
+    display: flex;
+    justify-content: space-between;
+    background: #222222;
+    opacity: 1;
+    align-items: center;
+    p {
+      font: normal normal medium 16px/25px Poppins;
+      letter-spacing: 0.8px;
+      color: #ffffff;
+      opacity: 0.48;
+    }
+  }
+  @keyframes shake {
+    0% {
+      transform: rotate(-45deg);
+    }
+  
+    25% {
+      transform: rotate(45deg);
+    }
+  
+    50% {
+      transform: rotate(-45deg);
+    }
+  
+    75% {
+      transform: rotate(45deg);
+    }
+  
+    100% {
+      transform: rotate(-45deg);
+    }
+  }
+  
+  @keyframes width {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+  
+    100% {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+  
